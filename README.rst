@@ -1,9 +1,8 @@
-========================
-django-twoscoops-project
-========================
+=======================
+django-project-template
+=======================
 
-A project template for Django 1.6 (with a tag for Django 1.5).
-
+A project template for Django 1.7 based on the django-two-scoops project template.
 To use this project follow these steps:
 
 #. Create your working environment
@@ -54,7 +53,6 @@ There is a special version of virtualenvwrapper for use with Windows (https://py
     > mkvirtualenv icecream-dev
     > add2virtualenv icecream
 
-
 Installing Django
 =================
 
@@ -69,10 +67,6 @@ To create a new Django project called '**icecream**' using
 django-twoscoops-project, run the following command::
 
     $ django-admin.py startproject --template=https://github.com/twoscoops/django-twoscoops-project/archive/master.zip --extension=py,rst,html icecream_project
-
-For Django 1.5 users, we recommend::
-
-    $ django-admin.py startproject --template=https://github.com/twoscoops/django-twoscoops-project/archive/1.5.zip --extension=py,rst,html icecream_project
 
 Installation of Dependencies
 =============================
@@ -89,24 +83,3 @@ For production::
 
 *note: We install production requirements this way because many Platforms as a
 Services expect a requirements.txt file in the root of projects.*
-
-Follows Best Practices
-======================
-
-.. image:: http://twoscoops.smugmug.com/Two-Scoops-Press-Media-Kit/i-C8s5jkn/0/O/favicon-152.png
-   :name: Two Scoops Logo
-   :align: center
-   :alt: Two Scoops of Django
-   :target: http://twoscoopspress.org/products/two-scoops-of-django-1-6
-
-This project follows best practices as espoused in `Two Scoops of Django: Best Practices for Django 1.6`_.
-
-.. _`Two Scoops of Django: Best Practices for Django 1.6`: http://twoscoopspress.org/products/two-scoops-of-django-1-6
-
-Acknowledgements
-================
-
-- Many thanks to Randall Degges for the inspiration to write the book and django-skel.
-- All of the contributors_ to this project.
-
-.. _contributors: https://github.com/twoscoops/django-twoscoops-project/blob/master/CONTRIBUTORS.txt
