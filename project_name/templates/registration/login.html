@@ -1,6 +1,6 @@
-{% extends "project_name/base.html" %}
+{% templatetag openblock %} extends "project_name/base.html" {% templatetag closeblock %}
 
-{% block content %}
+{% templatetag openblock %} block content {% templatetag closeblock %}
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
@@ -9,23 +9,23 @@
     </div>
   </div>
 
-  {% if form.errors %}
+  {% templatetag openblock %} if form.errors {% templatetag closeblock %}
   <div class="row">
     <div class="col-md-offset-3 col-md-6 alert alert-warning alert-dismissable">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      {% for error in form.non_field_errors %}
-      <p><strong>Oops:</strong> {{ error }}</p>
-      {% endfor %}
+      {% templatetag openblock %} for error in form.non_field_errors {% templatetag closeblock %}
+      <p><strong>Oops:</strong> {% templatetag openvariable %} error {% templatetag closevariable %}</p>
+      {% templatetag openblock %} endfor {% templatetag closeblock %}
     </div>
   </div>
-  {% endif %}
+  {% templatetag openblock %} endif {% templatetag closeblock %}
 
 
   <div class="row">
     <div class="col-md-offset-3 col-md-6 well">
 
-      <form class="form-horizontal" role="form" method="post" action="{% url 'django.contrib.auth.views.login' %}">
-        {% csrf_token %}
+      <form class="form-horizontal" role="form" method="post" action="{% templatetag openblock %} url 'django.contrib.auth.views.login' {% templatetag closeblock %}">
+        {% templatetag openblock %} csrf_token {% templatetag closeblock %}
 
         <div class="form-group">
           <label for="username" class="col-md-2 control-label">Username</label>
@@ -47,10 +47,10 @@
           </div>
         </div>
 
-        <input type="hidden" name="next" value="{{ next }}" />
+        <input type="hidden" name="next" value="{% templatetag openvariable %} next {% templatetag closevariable %}" />
       </form>
 
     </div>
   </div>
 </div>
-{% endblock %}
+{% templatetag openblock %} endblock {% templatetag closeblock %}
