@@ -1,4 +1,4 @@
-{% if user.is_authenticated %}
+{% templatetag openblock %} if user.is_authenticated {% templatetag closeblock %}
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container-fluid">
@@ -16,15 +16,15 @@
       <ul class="nav navbar-nav pull-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            {% if user.first_name and user.last_name %}{{ user.first_name }} {{ user.last_name }}
-            {% elif user.email %}{{ user.email }}
-            {% else %}{{ user.username }}{% endif %}
+            {% templatetag openblock %} if user.first_name and user.last_name {% templatetag closeblock %}{{ user.first_name }} {{ user.last_name }}
+            {% templatetag openblock %} elif user.email {% templatetag closeblock %}{{ user.email }}
+            {% templatetag openblock %} else {% templatetag closeblock %}{{ user.username }}{% templatetag openblock %} endif {% templatetag closeblock %}
             &nbsp;<b class="caret"></b>
           </a>
           <ul class="dropdown-menu">
-            {% if user.is_staff %}<li><a href="{% url 'admin:index' %}">Admin</a></li>{% endif %}
+            {% templatetag openblock %} if user.is_staff {% templatetag closeblock %}<li><a href="{% templatetag openblock %} url 'admin:index' {% templatetag closeblock %}">Admin</a></li>{% templatetag openblock %} endif {% templatetag closeblock %}
             <li><a href="#">My Account</a></li>
-            <li><a href="{% url 'log_out' %}">Log Out</a></li>
+            <li><a href="{% templatetag openblock %} url 'log_out' {% templatetag closeblock %}">Log Out</a></li>
           </ul>
         </li>
       </ul>
@@ -32,7 +32,7 @@
   </div>
 </nav>
 
-{% else %}
+{% templatetag openblock %} else {% templatetag closeblock %}
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container-fluid">
@@ -42,4 +42,4 @@
   </div>
 </nav>
 
-{% endif %}
+{% templatetag openblock %} endif {% templatetag closeblock %}
