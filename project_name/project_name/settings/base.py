@@ -47,7 +47,6 @@ MEDIA_URL = '/media/'
 
 # STATIC FILE CONFIGURATION
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = (
     os.path.join(DJANGO_ROOT, 'static'),
 )
@@ -76,13 +75,6 @@ TEMPLATE_LOADERS = (
 
 TEMPLATE_DIRS = (
     os.path.join(DJANGO_ROOT, 'templates'),
-)
-
-# Allow access to request object in templates
-# http://stackoverflow.com/questions/2882490/get-the-current-url-within-a-django-template
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
-TEMPLATE_CONTEXT_PROCESSORS = TCP + (
-    'django.core.context_processors.request',
 )
 
 # MIDDLEWARE CONFIGURATION
