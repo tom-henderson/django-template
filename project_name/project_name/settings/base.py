@@ -46,7 +46,6 @@ MEDIA_ROOT = os.path.join(DJANGO_ROOT, 'media'),
 MEDIA_URL = '/media/'
 
 # STATIC FILE CONFIGURATION
-STATIC_ROOT = os.path.join(DJANGO_ROOT, 'static')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
