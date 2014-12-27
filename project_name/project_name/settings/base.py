@@ -89,6 +89,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+
 # APP CONFIGURATION
 DJANGO_APPS = (
     'django.contrib.auth',
