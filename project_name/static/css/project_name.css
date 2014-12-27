@@ -1,1 +1,7 @@
-/*! project specific CSS goes here. */
+body { padding-top: 50px; }
+
+@media print {
+  a[href]:after {
+    content: none;
+  }
+}
