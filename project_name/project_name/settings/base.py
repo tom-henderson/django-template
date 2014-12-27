@@ -8,7 +8,7 @@ DJANGO_ROOT = os.path.dirname(CONFIG_ROOT)
 
 PROJECT_ROOT = os.path.dirname(DJANGO_ROOT)
 
-SITE_NAME = basename(DJANGO_ROOT)
+SITE_NAME = os.path.basename(DJANGO_ROOT)
 
 # Add our project to our pythonpath, this way we don't need to type our project
 # name in our dotted import paths:
