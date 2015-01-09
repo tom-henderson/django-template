@@ -1,0 +1,64 @@
+{% templatetag openblock %} extends "{{project_name}}/base.html" {% templatetag closeblock %}
+
+{% templatetag openblock %} load staticfiles {% templatetag closeblock %}
+{% templatetag openblock %} load form_extras {% templatetag closeblock %}
+
+{% templatetag openblock %} block content {% templatetag closeblock %}
+<div class="container" id="item-list">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>{{project_name}}</h1>
+      <h3>Edit {% templatetag openvariable %} form.instance {% templatetag closevariable %}</h3>
+    </div>
+  </div>
+</div>
+
+
+
+<form class="container form-horizontal" role="form" method="post" action".">
+  {% templatetag openblock %} csrf_token {% templatetag closeblock %}
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h4>{% templatetag openvariable %} subheading {% templatetag closevariable %}</h4>
+
+      {% templatetag openblock %} for field in form {% templatetag closeblock %}
+
+      <div class="form-group {% templatetag openblock %} if field.errors {% templatetag closeblock %}has-error{% templatetag openblock %} endif {% templatetag closeblock %}">
+
+        <label for="{% templatetag openvariable %}field.id_for_label{% templatetag closevariable %}" class="col-xs-4 col-sm-3 control-label">
+          {% templatetag openvariable %} field.label|title {% templatetag closevariable %}
+        </label>
+
+        <div class="col-xs-6">
+          {% templatetag openblock %} if field|field_type != "CheckboxInput" {% templatetag closeblock %}
+            {% templatetag openvariable %} field {% templatetag closevariable %}
+          {% templatetag openblock %} else {% templatetag closeblock %}
+            <ul class="list-unstyled">
+              {% templatetag openblock %} for checkbox in field {% templatetag closeblock %}
+              <li class="checkbox">{% templatetag openvariable %} checkbox {% templatetag closevariable %}</li>
+              {% templatetag openblock %} endfor {% templatetag closeblock %}
+            </ul>
+          {% templatetag openblock %} endif {% templatetag closeblock %}
+        </div>
+
+      </div>
+
+      {% templatetag openblock %} endfor {% templatetag closeblock %}
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <div class="col-xs-offset-4 col-sm-offset-3 col-xs-4">
+              <button type="submit" class="btn btn-primary">
+                {% templatetag openvariable %} submit_button_label {% templatetag closevariable %}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+</form>
+
+{% templatetag openblock %} endblock {% templatetag closeblock %}
