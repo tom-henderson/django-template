@@ -42,7 +42,7 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 
 # MEDIA CONFIGURATION
-MEDIA_ROOT = os.path.join(DJANGO_ROOT, 'media'),
+MEDIA_ROOT = os.path.join(DJANGO_ROOT, 'media')
 MEDIA_URL = '/media/'
 
 # STATIC FILE CONFIGURATION
