@@ -2,7 +2,7 @@ from django import forms
 
 
 class BootStrapForm(forms.ModelForm):
-    def __init__(self, args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super(BootStrapForm, self).__init__(*args, **kwargs)
 
         # Add bootstrap classes:
