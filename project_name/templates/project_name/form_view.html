@@ -51,7 +51,11 @@
           <div class="form-group">
             <div class="col-xs-offset-4 col-sm-offset-3 col-xs-4">
               <button type="submit" class="btn btn-primary">
-                {% templatetag openvariable %} submit_button_label {% templatetag closevariable %}
+                {% templatetag openblock %} if submit_button_label {% templatetag closeblock %}
+                  {% templatetag openvariable %} submit_button_label {% templatetag closevariable %}
+                {% templatetag openblock %} else {% templatetag closeblock %}
+                  Submit
+                {% templatetag openblock %} endif {% templatetag closeblock %}
               </button>
             </div>
           </div>
