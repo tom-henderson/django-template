@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+{% templatetag openblock %} include "automator/head.html" {% templatetag closeblock %}
+{% templatetag openblock %} block extrahead {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
+</head>
+
+<body>
+
+{% templatetag openblock %} include "automator/navbar.html" {% templatetag closeblock %}
+
+{% templatetag openblock %} block content {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+{% templatetag openblock %} include "automator/tail.html" {% templatetag closeblock %}
+
+{% templatetag openblock %} block scripts {% templatetag closeblock %}{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+</body>
+</html>
