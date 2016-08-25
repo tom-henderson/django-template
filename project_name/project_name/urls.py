@@ -5,7 +5,7 @@ from django.contrib import admin
 from django.conf import settings
 
 import views
-import django.contrib.auth.views.login
+import django.contrib.auth.views
 
 admin.autodiscover()
 
