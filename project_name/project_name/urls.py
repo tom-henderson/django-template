@@ -10,7 +10,7 @@ import django.contrib.auth.views
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name='{{project_name}}/base.html')),
+    url(r'^$', TemplateView.as_view(template_name='base.html')),
     url(r'^login/$', django.contrib.auth.views.login),
     url(r'^logout/$', views.log_out, name='log_out'),
     url(r'^admin/', include(admin.site.urls)),
