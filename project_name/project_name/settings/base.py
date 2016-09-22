@@ -62,7 +62,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             DJANGO_ROOT,
-            'templates'
+            'templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -81,7 +81,7 @@ TEMPLATES = [
 
 # MIDDLEWARE CONFIGURATION
 MIDDLEWARE_CLASSES = (
-    # Default Django middleware.
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -93,20 +93,31 @@ MIDDLEWARE_CLASSES = (
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 # APP CONFIGURATION
+# Whitenoise must go here too so it loads before django.contrib.staticfiles
 DJANGO_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django.contrib.admin',
 )
 
-THIRD_PARTY_APPS = ()
+THIRD_PARTY_APPS = (
+    # 'taggit',
+    # 'taggit_helpers',
+    # 'rest_framework',
+    # 'taggit_serializer',
+)
 
 LOCAL_APPS = (
     'common',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
