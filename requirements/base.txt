@@ -5,6 +5,8 @@ six==1.10.0
 # Whitenoise: Staticfile hosting
 whitenoise==3.2.1
 
+git+https://github.com/tom-henderson/django-common
+
 # Tagging
 # Taggit Helpers: TaggitCounter, TaggitListFilter
 # Taggit Templatetags: Template tags for tags - https://github.com/feuervogel/django-taggit-templatetags
