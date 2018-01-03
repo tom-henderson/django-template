@@ -4,16 +4,18 @@ from django.views.generic import TemplateView
 from django.contrib import admin
 from django.conf import settings
 
-import views
+from django_common.views import LogOutRedirectView
+
 import django.contrib.auth.views
 
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name='base.html')),
-    url(r'^login/$', django.contrib.auth.views.login, name='log_in'),
-    url(r'^logout/$', views.log_out, name='log_out'),
-    url(r'^admin/', include(admin.site.urls)),
+    path('login/', django.contrib.auth.views.login, name='log_in'),
+    path('logout/', LogOutRedirectView.as_view(), name='log_out'),
+    path('admin/logout/', LogOutRedirectView.as_view()),
+    path('admin/', include(admin.site.urls)),
+    path('', TemplateView.as_view(template_name='base.html')),
 ]
 
 if settings.DEBUG:
