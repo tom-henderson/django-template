@@ -14,7 +14,7 @@ urlpatterns = [
     path('login/', django.contrib.auth.views.login, name='log_in'),
     path('logout/', LogOutRedirectView.as_view(), name='log_out'),
     path('admin/logout/', LogOutRedirectView.as_view()),
-    path('admin/', include(admin.site.urls)),
+    path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='base.html')),
 ]
 
