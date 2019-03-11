@@ -1,6 +1,20 @@
 """Common settings and globals."""
 import os
 
+# Normally you should not import ANYTHING from Django directly
+# into your settings, but ImproperlyConfigured is an exception.
+from django.core.exceptions import ImproperlyConfigured
+
+
+def get_env_setting(setting):
+    """ Get the environment setting or return exception """
+    try:
+        return os.environ[setting]
+    except KeyError:
+        error_msg = "Set the %s env variable" % setting
+        raise ImproperlyConfigured(error_msg)
+
+
 #  PATH CONFIGURATION
 # Absolute filesystem path to the Django project directory:
 CONFIG_ROOT = os.path.dirname(os.path.dirname(__file__))
@@ -46,10 +60,14 @@ MEDIA_URL = '/media/'
 # STATIC FILE CONFIGURATION
 STATIC_ROOT = os.path.join(DJANGO_ROOT, 'static')
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(CONFIG_ROOT, 'static'),
+)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'npm.finders.NpmFinder',
 )
 
 # TEMPLATE CONFIGURATION
@@ -57,8 +75,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            DJANGO_ROOT,
-            'templates',
+            os.path.join(DJANGO_ROOT, 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -69,6 +86,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
+                'django.template.context_processors.request',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
@@ -115,3 +133,21 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Django NPM
+NPM_ROOT_PATH = PROJECT_ROOT
+NPM_STATIC_FILES_PREFIX = 'npm'
+NPM_FILE_PATTERNS = {
+    'bootstrap': [
+        'dist/css/*.min.*',
+        'dist/fonts/*',
+        'dist/js/*.min.*',
+    ],
+    'font-awesome': [
+        'css/*.min.*',
+        'fonts/*',
+    ],
+    'jquery': [
+        'dist/jquery.min.js',
+    ],
+}
