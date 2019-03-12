@@ -6,11 +6,13 @@ import os
 from django.core.exceptions import ImproperlyConfigured
 
 
-def get_env_setting(setting):
+def get_env_setting(setting, default=None):
     """ Get the environment setting or return exception """
     try:
         return os.environ[setting]
     except KeyError:
+        if default:
+            return default
         error_msg = "Set the %s env variable" % setting
         raise ImproperlyConfigured(error_msg)
 
